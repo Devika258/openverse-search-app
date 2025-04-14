@@ -30,7 +30,7 @@ const options = {
 const specs = swaggerJsdoc(options);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 
-// ✅ Add route to download raw API spec JSON
+// ✅ Route to download raw API spec JSON
 app.get('/api-spec.json', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
   res.send(specs);
@@ -40,6 +40,11 @@ app.get('/api-spec.json', (req, res) => {
 app.use('/auth', authRoutes);
 app.use('/search', searchRoutes);
 
-// ✅ Start server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// ✅ Start server only if not in test mode
+if (require.main === module) {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+}
+
+// ✅ Export app for testing
+module.exports = app;

@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 
 const router = express.Router();
 
-// ✅ GET /auth/test route
+// ✅ GET /auth/test
 router.get('/test', (req, res) => {
   console.log("GET /auth/test hit");
   res.send('Auth route is working!');
@@ -20,6 +20,9 @@ router.get('/test', (req, res) => {
  *         application/json:
  *           schema:
  *             type: object
+ *             required:
+ *               - email
+ *               - password
  *             properties:
  *               email:
  *                 type: string
@@ -28,16 +31,19 @@ router.get('/test', (req, res) => {
  *     responses:
  *       200:
  *         description: JWT token returned
+ *       401:
+ *         description: Invalid credentials
  */
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
+  // Hardcoded credentials for demo
   if (email === "test@example.com" && password === "password") {
     const token = jwt.sign({ email }, 'your_secret_key', { expiresIn: '1h' });
     return res.json({ token });
   }
 
-  res.status(401).json({ message: "Invalid credentials" });
+  return res.status(401).json({ message: "Invalid credentials" });
 });
 
 /**
@@ -74,12 +80,10 @@ router.post('/login', async (req, res) => {
 router.post('/register', async (req, res) => {
   const { firstName, lastName, email, password } = req.body;
 
-  // Basic validation
   if (!firstName || !lastName || !email || !password) {
     return res.status(400).json({ message: 'All fields are required: firstName, lastName, email, password' });
   }
 
-  // Simulate storing the user (replace with DB in future)
   console.log(`✅ Registered user: ${firstName} ${lastName} (${email})`);
 
   return res.status(201).json({
