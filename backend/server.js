@@ -4,47 +4,68 @@ const cors = require('cors');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJsdoc = require('swagger-jsdoc');
 
+// ✅ Load environment variables
+dotenv.config();
+
+// ✅ Create Express app
+const app = express();
+
+// ✅ CORS setup
+const allowedOrigin = process.env.FRONTEND_URL || 'http://localhost:3000';
+app.use(cors({
+  origin: allowedOrigin,
+  credentials: true
+}));
+
+// ✅ Body parser
+app.use(express.json());
+
+// ✅ Route modules
 const authRoutes = require('./routes/authRoutes');
 const searchRoutes = require('./routes/searchRoutes');
 
-dotenv.config();
-
-const app = express();
-app.use(express.json());
-app.use(cors());
-
-// ✅ Swagger setup
-const options = {
+// ✅ Swagger configuration
+const swaggerOptions = {
   definition: {
     openapi: '3.0.0',
     info: {
       title: 'Openverse Media Search API',
       version: '1.0.0',
-      description: 'Interactive API documentation'
+      description: 'Interactive API documentation for Openverse clone',
     },
     servers: [{ url: 'http://localhost:5000' }],
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
+        },
+      },
+    },
+    security: [{ bearerAuth: [] }],
   },
   apis: ['./routes/*.js'],
 };
 
-const specs = swaggerJsdoc(options);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
-
-// ✅ Route to download raw API spec JSON
+const swaggerSpec = swaggerJsdoc(swaggerOptions);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.get('/api-spec.json', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
-  res.send(specs);
+  res.send(swaggerSpec);
 });
 
-// ✅ Route definitions
+// ✅ Routes
 app.use('/auth', authRoutes);
 app.use('/search', searchRoutes);
 
-// ✅ Start server only if not in test mode
+// ✅ Start server
 if (require.main === module) {
   const PORT = process.env.PORT || 5000;
-  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running at http://localhost:${PORT}`);
+    console.log(`✅ CORS allowed for: ${allowedOrigin}`);
+  });
 }
 
-// ✅ Export app for testing
 module.exports = app;

@@ -39,3 +39,4 @@ docker-compose.override.yml
 # Cache
 .cache/
 .next/
+.aider*

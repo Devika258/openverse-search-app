@@ -1,0 +1,26 @@
+[
+  {
+    "firstName": "Read",
+    "lastName": "Me",
+    "email": "readme@gmail.com",
+    "password": "readme123"
+  },
+  {
+    "firstName": "Arun",
+    "lastName": "HP",
+    "email": "arunhp@gmail.com",
+    "password": "DevArun"
+  },
+  {
+    "firstName": "Dev",
+    "lastName": "SR",
+    "email": "devsr@gmail.com",
+    "password": "Dev@2020"
+  },
+  {
+    "firstName": "Hiji",
+    "lastName": "SR",
+    "email": "hiji@gmail.com",
+    "password": "test123"
+  }
+]
