@@ -4,27 +4,27 @@ const cors = require('cors');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJsdoc = require('swagger-jsdoc');
 
-// ✅ Load environment variables
+// Load environment variables
 dotenv.config();
 
-// ✅ Create Express app
+// Create Express app
 const app = express();
 
-// ✅ CORS setup
+// CORS setup
 const allowedOrigin = process.env.FRONTEND_URL || 'http://localhost:3000';
 app.use(cors({
   origin: allowedOrigin,
   credentials: true
 }));
 
-// ✅ Body parser
+// Body parser
 app.use(express.json());
 
-// ✅ Route modules
+// Route modules
 const authRoutes = require('./routes/authRoutes');
 const searchRoutes = require('./routes/searchRoutes');
 
-// ✅ Swagger configuration
+// Swagger configuration
 const swaggerOptions = {
   definition: {
     openapi: '3.0.0',
@@ -55,16 +55,16 @@ app.get('/api-spec.json', (req, res) => {
   res.send(swaggerSpec);
 });
 
-// ✅ Routes
+// Routes
 app.use('/auth', authRoutes);
 app.use('/search', searchRoutes);
 
-// ✅ Start server
+// Start server
 if (require.main === module) {
   const PORT = process.env.PORT || 5000;
   app.listen(PORT, () => {
-    console.log(`🚀 Server running at http://localhost:${PORT}`);
-    console.log(`✅ CORS allowed for: ${allowedOrigin}`);
+    console.log(`Server running at http://localhost:${PORT}`);
+    console.log(`CORS allowed for: ${allowedOrigin}`);
   });
 }
 

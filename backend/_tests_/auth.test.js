@@ -1,5 +1,5 @@
 const request = require('supertest');
-const app = require('../server'); // Make sure this points to your Express app
+const app = require('../server');
 
 describe('Auth Routes', () => {
   it('should login successfully with valid credentials', async () => {

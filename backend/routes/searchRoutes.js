@@ -39,7 +39,7 @@ router.get('/media', async (req, res) => {
 
     return res.json(response.data);
   } catch (error) {
-    console.error('❌ Error fetching from Openverse API:', error.message);
+    console.error('Error fetching from Openverse API:', error.message);
     return res.status(500).json({ message: "Error fetching media" });
   }
 });

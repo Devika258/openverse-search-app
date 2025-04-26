@@ -5,31 +5,31 @@ const path = require('path');
 
 const router = express.Router();
 
-// 📁 File path to persist users
+// File path to persist users
 const usersFilePath = path.join(__dirname, '../data/users.json');
 
-// 🔄 Load users from file if exists
+// Load users from file if exists
 let users = [];
 try {
   if (fs.existsSync(usersFilePath)) {
     users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
   }
 } catch (err) {
-  console.error('❌ Failed to load users from file:', err);
+  console.error('Failed to load users from file:', err);
 }
 
-// 💾 Save users to file
+// Save users to file
 const saveUsers = () => {
   try {
     fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2));
   } catch (err) {
-    console.error('❌ Failed to save users to file:', err);
+    console.error('Failed to save users to file:', err);
   }
 };
 
-// ✅ Health/test route
+// Health/test route
 router.get('/test', (req, res) => {
-  res.send('✅ Auth route is working!');
+  res.send('Auth route is working!');
 });
 
 /**
@@ -69,7 +69,7 @@ router.get('/test', (req, res) => {
 router.post('/register', (req, res) => {
   const { firstName, lastName, email, password } = req.body;
 
-  // 🔒 Validation
+  // Validation
   if (!firstName || !lastName || !email || !password) {
     return res.status(400).json({ message: 'All fields are required: firstName, lastName, email, password' });
   }
@@ -84,7 +84,7 @@ router.post('/register', (req, res) => {
   users.push(newUser);
   saveUsers();
 
-  console.log(`✅ Registered user: ${firstName} ${lastName} (${normalizedEmail})`);
+  console.log(`Registered user: ${firstName} ${lastName} (${normalizedEmail})`);
 
   return res.status(201).json({
     message: 'User registered successfully!',
