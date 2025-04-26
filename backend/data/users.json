@@ -22,5 +22,17 @@
     "lastName": "SR",
     "email": "hiji@gmail.com",
     "password": "test123"
+  },
+  {
+    "firstName": "Hi",
+    "lastName": "Hi",
+    "email": "hihi@gmail.com",
+    "password": "test123"
+  },
+  {
+    "firstName": "Annie",
+    "lastName": "Sijo",
+    "email": "annie.sijo@gmail.com",
+    "password": "test1234"
   }
 ]
