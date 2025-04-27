@@ -1,8 +1,14 @@
 import { render, screen } from '@testing-library/react';
-import App from './App';
+import { BrowserRouter } from 'react-router-dom'; // Important: Import BrowserRouter
+import App from '../App'; // Correct path to App
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test('renders Openverse Media Search heading', () => {
+  render(
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  );
+
+  const heading = screen.getByText(/Openverse Media Search/i);
+  expect(heading).toBeInTheDocument();
 });
