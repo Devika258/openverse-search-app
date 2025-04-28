@@ -34,5 +34,11 @@
     "lastName": "Sijo",
     "email": "annie.sijo@gmail.com",
     "password": "test1234"
+  },
+  {
+    "firstName": "Devi",
+    "lastName": "Ji",
+    "email": "devi2020@gmail.com",
+    "password": "test1234"
   }
 ]

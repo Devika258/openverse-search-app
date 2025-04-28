@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema({
   lastname: String,
   email: { type: String, unique: true },
   password: String,
-  searches: [searchSchema]   // <-- Add this array to save searches
+  searches: [searchSchema]   // <-- Adding this array to save searches
 });
 
 module.exports = mongoose.model('User', userSchema);

@@ -6,20 +6,20 @@ const Search = () => {
   const [media, setMedia] = useState([]);
   const [error, setError] = useState('');
   const [searched, setSearched] = useState(false);
-  const [loading, setLoading] = useState(false); // NEW loading state
+  const [loading, setLoading] = useState(false);
 
   const handleSearch = async () => {
     setError('');
     setMedia([]);
     setSearched(true);
-    setLoading(true); // Start loading when search begins
+    setLoading(true); 
 
     const token = localStorage.getItem('token');
     console.log("Token:", token);
 
     if (!token) {
       setError('You must be logged in to search.');
-      setLoading(false); // Stop loading if no token
+      setLoading(false);
       return;
     }
 
@@ -37,7 +37,7 @@ const Search = () => {
       console.error("Search error:", err);
       setError('Failed to fetch results. Please try again.');
     } finally {
-      setLoading(false); // Always stop loading after try-catch
+      setLoading(false);
     }
   };
 
@@ -55,7 +55,7 @@ const Search = () => {
         <button
           className="btn btn-secondary ms-2"
           onClick={handleSearch}
-          disabled={loading}  // Disable button while loading
+          disabled={loading}
         >
           {loading ? 'Searching...' : 'Search'}
         </button>

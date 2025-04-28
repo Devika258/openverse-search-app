@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import logo from '../logo.png';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -13,7 +14,14 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg bg-light border-bottom shadow-sm">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/search">Openverse</Link>
+        <Link className="navbar-brand d-flex align-items-center" to="/search">
+          <img
+            src={logo}
+            alt="Logo"
+            style={{ width: '40px', height: '40px', marginRight: '10px' }}
+          />
+          Openverse
+        </Link>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav d-flex flex-row align-items-center mb-2 mb-lg-0">
             {!isLoggedIn && (

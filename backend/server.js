@@ -63,8 +63,8 @@ app.use('/search', searchRoutes);
 if (require.main === module) {
   const PORT = process.env.PORT || 5000;
   app.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}`);
-    console.log(`CORS allowed for: ${allowedOrigin}`);
+    console.log(`✅ Server running at http://localhost:${PORT}`);
+    console.log(`✅ CORS allowed for: ${allowedOrigin}`);
   });
 }
 

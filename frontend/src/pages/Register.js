@@ -4,8 +4,8 @@ import axios from 'axios';
 
 const Register = () => {
   const [form, setForm] = useState({
-    firstName: '',    // corrected
-    lastName: '',     // corrected
+    firstName: '',
+    lastName: '',
     email: '',
     password: '',
   });
@@ -33,7 +33,7 @@ const Register = () => {
       setError('Password must be at least 6 characters long.');
       return false;
     }
-    setError('');  // Clear any previous errors if validation passes
+    setError('');
     return true;
   };
 
@@ -99,7 +99,7 @@ const Register = () => {
           <div className="mb-3">
             <input
               type="text"
-              name="firstName"  // corrected
+              name="firstName"
               className="form-control p-3"
               placeholder="First Name"
               value={form.firstName}
@@ -111,7 +111,7 @@ const Register = () => {
           <div className="mb-3">
             <input
               type="text"
-              name="lastName"   // corrected
+              name="lastName"
               className="form-control p-3"
               placeholder="Last Name"
               value={form.lastName}

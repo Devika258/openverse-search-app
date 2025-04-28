@@ -6,8 +6,8 @@ const SearchPage = () => {
   const [searchInput, setSearchInput] = useState('');
   const [mediaResults, setMediaResults] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');        // Added error state
-  const [searched, setSearched] = useState(false); // To track if user has searched
+  const [error, setError] = useState('');
+  const [searched, setSearched] = useState(false);
 
   const performMediaSearch = async (searchTerm) => {
     try {
