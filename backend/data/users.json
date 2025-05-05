@@ -40,5 +40,47 @@
     "lastName": "Ji",
     "email": "devi2020@gmail.com",
     "password": "test1234"
+  },
+  {
+    "firstName": "Devika",
+    "lastName": "S",
+    "email": "devika.siva.raj@gmail.com",
+    "password": "test@1234"
+  },
+  {
+    "firstName": "Jay",
+    "lastName": "A",
+    "email": "jay.a@gmail.com",
+    "password": "test123"
+  },
+  {
+    "firstName": "Devika",
+    "lastName": "S R",
+    "email": "dev_214@gmail.com",
+    "password": "test@123"
+  },
+  {
+    "firstName": "Dev",
+    "lastName": "S R",
+    "email": "dev.sr@gmail.com",
+    "password": "test@123"
+  },
+  {
+    "firstName": "Dev",
+    "lastName": "Siv",
+    "email": "dev.siv@gmail.com",
+    "password": "test@123"
+  },
+  {
+    "firstName": "Dev",
+    "lastName": "Raj",
+    "email": "dev.raj@gmail.com",
+    "password": "test@123"
+  },
+  {
+    "firstName": "Dev",
+    "lastName": "S Raj",
+    "email": "dev.sraj@gmail.com",
+    "password": "test@123"
   }
 ]
