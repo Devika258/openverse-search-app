@@ -1,12 +1,6 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 
-/**
- * PrivateRoute component:
- * Protects routes from unauthorized access.
- * If a valid token is found in localStorage, it renders the child component.
- * Otherwise, it redirects to the login page.
- */
 const PrivateRoute = ({ children }) => {
   const token = localStorage.getItem('token');
 
